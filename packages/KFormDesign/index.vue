@@ -178,7 +178,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "表单设计器 --by kcz"
+      default: "表单设计器"
     },
     showHead: {
       type: Boolean,
@@ -262,8 +262,8 @@ export default {
         list: [],
         config: {
           layout: "horizontal",
-          labelCol: { span: 4 },
-          wrapperCol: { span: 18 },
+          labelCol: { span: 0 },
+          wrapperCol: { span: 24 },
           hideRequiredMark: false,
           customStyle: ""
         }

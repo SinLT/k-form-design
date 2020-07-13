@@ -11,6 +11,7 @@ export const basicsList = [
     icon: "icon-write",
     options: {
       type: "text",
+      isLable: false,
       width: "100%", // 宽度
       defaultValue: "", // 默认值
       placeholder: "请输入", // 没有输入时，提示文字
@@ -35,6 +36,7 @@ export const basicsList = [
     icon: "icon-edit",
     options: {
       width: "100%", // 宽度
+      isLable: false,
       minRows: 4,
       maxRows: 6,
       maxLength: null,
@@ -59,6 +61,7 @@ export const basicsList = [
     icon: "icon-number",
     options: {
       width: "100%", // 宽度
+      isLable: false,
       defaultValue: 0, // 默认值
       min: null, // 可输入最小值
       max: null, // 可输入最大值
@@ -83,6 +86,7 @@ export const basicsList = [
     icon: "icon-xiala",
     options: {
       width: "100%", // 宽度
+      isLable: false,
       defaultValue: undefined, // 下拉选框请使用undefined为默认值
       multiple: false, // 是否允许多选
       disabled: false, // 是否禁用
@@ -118,6 +122,7 @@ export const basicsList = [
     label: "多选框",
     icon: "icon-duoxuan1",
     options: {
+      isLable: false,
       disabled: false, //是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏
       defaultValue: [],
@@ -152,6 +157,7 @@ export const basicsList = [
     label: "单选框", // 标题文字
     icon: "icon-danxuan-cuxiantiao",
     options: {
+      isLable: false,
       disabled: false, //是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏
       defaultValue: "", // 默认值
@@ -187,6 +193,7 @@ export const basicsList = [
     icon: "icon-calendar",
     options: {
       width: "100%", // 宽度
+      isLable: false,
       defaultValue: "", // 默认值，字符串 12:00:00
       rangeDefaultValue: [], // 默认值，字符串 12:00:00
       range: false, // 范围日期选择，为true则会显示两个时间选择框（同时defaultValue和placeholder要改成数组），
@@ -213,6 +220,7 @@ export const basicsList = [
     icon: "icon-time",
     options: {
       width: "100%", // 宽度
+      isLable: false,
       defaultValue: "", // 默认值，字符串 12:00:00
       disabled: false, // 是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏
@@ -234,6 +242,7 @@ export const basicsList = [
     label: "评分", // 标题文字
     icon: "icon-pingfen_moren",
     options: {
+      isLable: false,
       defaultValue: 0,
       max: 5, // 最大值
       disabled: false, // 是否禁用
@@ -255,6 +264,7 @@ export const basicsList = [
     icon: "icon-menu",
     options: {
       width: "100%", // 宽度
+      isLable: false,
       defaultValue: 0, // 默认值， 如果range为true的时候，则需要改成数组,如：[12,15]
       disabled: false, // 是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏
@@ -278,6 +288,7 @@ export const basicsList = [
     label: "上传文件", // 标题文字
     icon: "icon-upload",
     options: {
+      isLable: false,
       defaultValue: "[]",
       multiple: false,
       disabled: false,
@@ -307,6 +318,7 @@ export const basicsList = [
     label: "上传图片",
     icon: "icon-image",
     options: {
+      isLable: false,
       defaultValue: "[]",
       multiple: false,
       hidden: false, // 是否隐藏，false显示，true隐藏
@@ -334,6 +346,7 @@ export const basicsList = [
     label: "树选择器", // 标题文字
     icon: "icon-tree",
     options: {
+      isLable: false,
       disabled: false, //是否禁用
       defaultValue: undefined, // 默认值
       multiple: false,
@@ -381,6 +394,7 @@ export const basicsList = [
     label: "级联选择器", // 标题文字
     icon: "icon-guanlian",
     options: {
+      isLable: false,
       disabled: false, //是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏
       defaultValue: undefined, // 默认值
@@ -427,6 +441,7 @@ export const basicsList = [
     icon: "icon-biaoge",
     list: [],
     options: {
+      isLable: false,
       scrollY: 0,
       disabled: false,
       hidden: false, // 是否隐藏，false显示，true隐藏
@@ -443,6 +458,7 @@ export const basicsList = [
     icon: "icon-LC_icon_edit_line_1",
     list: [],
     options: {
+      isLable: false,
       height: 300,
       placeholder: "请输入",
       defaultValue: "",
@@ -466,6 +482,7 @@ export const basicsList = [
     label: "开关", // 标题文字
     icon: "icon-kaiguan3",
     options: {
+      isLable: false,
       defaultValue: false, // 默认值 Boolean 类型
       hidden: false, // 是否隐藏，false显示，true隐藏
       disabled: false // 是否禁用
@@ -512,6 +529,7 @@ export const basicsList = [
     icon: "icon-zihao",
     options: {
       textAlign: "left",
+      textStyle: "",
       hidden: false, // 是否隐藏，false显示，true隐藏
       showRequiredMark: false
     },

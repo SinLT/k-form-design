@@ -64,6 +64,7 @@
           <a-icon type="border-horizontal" />增加一列
         </li>
         <li @click="handleAddRow"><a-icon type="border-verticle" />增加一行</li>
+        <li @click="handleBack"><a-icon type="border-verticle" />回退</li>
       </ul>
     </div>
   </div>
@@ -101,7 +102,8 @@ export default {
       menuTop: 0,
       menuLeft: 0,
       trIndex: 0,
-      tdIndex: 0
+      tdIndex: 0,
+      backData: []
     };
   },
   props: {
@@ -289,6 +291,42 @@ export default {
 
       this.data.list = traverse(this.data.list);
     },
+    handleBack() {
+      const back = this.backData[this.backData.length - 1];
+      if (back) {
+        switch (back.type) {
+          case "DownMerge": {
+            this.rightMenuSelectValue.trs[back.trIndex].tds[
+              back.tdIndex
+            ].rowspan -= 1;
+            this.rightMenuSelectValue.trs[back.trIndex + 1].tds = back.nextTrs;
+            break;
+          }
+          case "RightMerge": {
+            this.rightMenuSelectValue.trs[back.trIndex].tds[
+              back.tdIndex
+            ].colspan -= back.RightTrsTd.colspan;
+            this.rightMenuSelectValue.trs[back.trIndex].tds.splice(
+              back.tdIndex + 1,
+              0,
+              back.RightTrsTd
+            );
+            break;
+          }
+          case "AddCol": {
+            this.rightMenuSelectValue.trs.forEach(item => {
+              item.tds.splice(back.tdIndex + 1, 1);
+            });
+            break;
+          }
+          case "AddRow": {
+            this.rightMenuSelectValue.trs.splice(back.trIndex + 1, 1);
+            break;
+          }
+        }
+        this.backData.splice(-1, 1);
+      }
+    },
     handleDownMerge() {
       // 向下合并
       if (
@@ -330,13 +368,20 @@ export default {
       this.rightMenuSelectValue.trs[this.trIndex].tds[
         this.tdIndex
       ].rowspan += 1;
+      const nextTrs = JSON.parse(
+        JSON.stringify(this.rightMenuSelectValue.trs[this.trIndex + 1].tds)
+      );
       this.rightMenuSelectValue.trs[
         this.trIndex + 1
       ].tds = this.rightMenuSelectValue.trs[this.trIndex + 1].tds.filter(
         (item, index) => index !== this.tdIndex - rows
       );
-
-      // }
+      this.backData.push({
+        type: "DownMerge",
+        trIndex: this.trIndex,
+        tdIndex: this.tdIndex,
+        nextTrs: nextTrs
+      });
     },
     handleRightMerge() {
       // 向右合并
@@ -369,7 +414,11 @@ export default {
       ].colspan += this.rightMenuSelectValue.trs[this.trIndex].tds[
         this.tdIndex + 1
       ].colspan;
-
+      const RightTrsTd = JSON.parse(
+        JSON.stringify(
+          this.rightMenuSelectValue.trs[this.trIndex].tds[this.tdIndex + 1]
+        )
+      );
       this.rightMenuSelectValue.trs[
         this.trIndex
       ].tds = this.rightMenuSelectValue.trs[this.trIndex].tds.filter(
@@ -377,7 +426,12 @@ export default {
           return index !== this.tdIndex + 1;
         }
       );
-      // }
+      this.backData.push({
+        type: "RightMerge",
+        trIndex: this.trIndex,
+        tdIndex: this.tdIndex,
+        RightTrsTd: RightTrsTd
+      });
     },
     handleAddCol() {
       // 增加列
@@ -387,6 +441,10 @@ export default {
           rowspan: 1,
           list: []
         });
+      });
+      this.backData.push({
+        type: "AddCol",
+        tdIndex: this.tdIndex
       });
     },
     handleAddRow() {
@@ -406,6 +464,10 @@ export default {
         });
       }
       this.rightMenuSelectValue.trs.splice(this.trIndex + 1, 0, rowJson);
+      this.backData.push({
+        type: "AddRow",
+        trIndex: this.trIndex
+      });
     },
     handleShowRightMenu(e, val, trIndex, tdIndex) {
       // 显示右键菜单

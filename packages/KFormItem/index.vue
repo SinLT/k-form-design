@@ -27,7 +27,7 @@
           'treeSelect'
         ].includes(record.type)
     "
-    :label="record.label"
+    :label="record.options.isLable ? record.label : ''"
     :label-col="formConfig.layout === 'horizontal' ? formConfig.labelCol : {}"
     :wrapper-col="
       formConfig.layout === 'horizontal' ? formConfig.wrapperCol : {}
@@ -446,10 +446,11 @@
   <!-- 文本 -->
   <a-form-item v-else-if="record.type === 'text'">
     <div :style="{ textAlign: record.options.textAlign }">
-      <label
+      <span
         :class="{ 'ant-form-item-required': record.options.showRequiredMark }"
         v-text="record.label"
-      ></label>
+        :style="record.options.textStyle"
+      ></span>
     </div>
   </a-form-item>
   <!-- html -->

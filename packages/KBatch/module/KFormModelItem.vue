@@ -257,10 +257,11 @@
   <!-- 文本 -->
   <a-form-model-item v-else-if="record.type === 'text'">
     <div :style="{ textAlign: record.options.textAlign }">
-      <label
+      <span
         :class="{ 'ant-form-item-required': record.options.showRequiredMark }"
         v-text="record.label"
-      ></label>
+        :style="record.options.textStyle"
+      ></span>
     </div>
   </a-form-model-item>
   <!-- html -->

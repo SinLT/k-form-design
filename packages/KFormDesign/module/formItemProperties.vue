@@ -335,6 +335,9 @@
             <a-radio-button value="right">右</a-radio-button>
           </a-radio-group>
         </a-form-item>
+        <a-form-item v-if="selectItem.type === 'text'" label="文字CSS">
+          <a-input v-model="options.textStyle" />
+        </a-form-item>
         <a-form-item v-if="selectItem.type === 'text'" label="操作属性">
           <kCheckbox v-model="options.showRequiredMark" label="显示必选标记" />
         </a-form-item>
@@ -353,6 +356,11 @@
           "
           label="操作属性"
         >
+          <kCheckbox
+            v-if="typeof options.isLable !== 'undefined'"
+            v-model="options.isLable"
+            label="显示label"
+          />
           <kCheckbox
             v-if="typeof options.hidden !== 'undefined'"
             v-model="options.hidden"

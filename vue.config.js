@@ -9,15 +9,16 @@ module.exports = {
       filename: "index.html"
     }
   },
+  publicPath: process.env.VUE_APP_Path,
   productionSourceMap: false,
   css: {
     loaderOptions: {
       less: {
         modifyVars: {
-          "primary-color": "#13c2c2",
-          // "primary-color": "#9867f7",
-          "layout-color": "#9867f7"
-          // "layout-color": "#ee88aa"
+          // "primary-color": "#13c2c2",
+          "primary-color": "#9C76E4",
+          // "layout-color": "#9867f7"
+          "layout-color": "#9C76E4"
         },
         javascriptEnabled: true
       }
