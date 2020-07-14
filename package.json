@@ -26,7 +26,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lib": "vue-cli-service build --target lib --name k-form-design --dest lib packages/index.js && npm run mini",
-    "mini": "vue-cli-service build --target lib --name k-form-design-mini --dest lib packages/mini.js --no-clean",
+    "mini": "vue-cli-service build --target lib --name kFormDesignMini --dest lib packages/mini.js --no-clean",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -48,7 +48,7 @@
     "@vue/cli-service": "^4.2.3",
     "@vue/eslint-config-prettier": "^5.0.0",
     "ant-design-vue": "^1.5.1",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
