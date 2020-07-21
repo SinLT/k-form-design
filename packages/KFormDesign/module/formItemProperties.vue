@@ -188,7 +188,8 @@
               'select',
               'switch',
               'slider',
-              'html'
+              'html',
+              'text'
             ].includes(selectItem.type) &&
               typeof options.defaultValue !== 'undefined'
           "
@@ -196,6 +197,20 @@
         >
           <a-input
             v-model="options.defaultValue"
+            :placeholder="
+              typeof options.format === 'undefined' ? '请输入' : options.format
+            "
+          />
+        </a-form-item>
+        <!-- 计算text数值 -->
+        <a-form-item
+          v-if="options.isSubmit && selectItem.type === 'text' &&
+              typeof options.computedItem !== 'undefined'
+          "
+          label="填写字段，加号隔开"
+        >
+          <a-input
+            v-model="options.computedItem"
             :placeholder="
               typeof options.format === 'undefined' ? '请输入' : options.format
             "
@@ -339,6 +354,11 @@
           <a-input v-model="options.textStyle" />
         </a-form-item>
         <a-form-item v-if="selectItem.type === 'text'" label="操作属性">
+          <kCheckbox
+            v-if="typeof options.isSubmit !== 'undefined'"
+            v-model="options.isSubmit"
+            label="是否为字段"
+          />
           <kCheckbox v-model="options.showRequiredMark" label="显示必选标记" />
         </a-form-item>
 

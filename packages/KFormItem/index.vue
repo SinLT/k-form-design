@@ -449,9 +449,22 @@
   <a-form-item v-else-if="record.type === 'text'">
     <div :style="{ textAlign: record.options.textAlign }">
       <span
+        v-if="!record.options.isSubmit"
         :class="{ 'ant-form-item-required': record.options.showRequiredMark }"
         v-text="record.label"
+        :style="record.options.textStyle"></span>
+      <span
+        v-else
+        :class="{ 'ant-form-item-required': record.options.showRequiredMark }"
+        v-text="record.options.defaultValue"
         :style="record.options.textStyle"
+        v-decorator="[
+          record.model,
+          {
+            initialValue: record.options.defaultValue,
+            rules: record.rules
+          }
+        ]"
       ></span>
     </div>
   </a-form-item>

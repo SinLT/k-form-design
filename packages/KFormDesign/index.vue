@@ -255,7 +255,6 @@ export default {
         "grid",
         "table",
         "alert",
-        "text",
         "html"
       ],
       data: {

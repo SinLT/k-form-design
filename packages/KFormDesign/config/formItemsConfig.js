@@ -530,12 +530,22 @@ export const basicsList = [
     label: "文字",
     icon: "icon-zihao",
     options: {
+      isSubmit: false,
+      defaultValue: "0",
+      computedItem: "",
       textAlign: "left",
       textStyle: "",
       hidden: false, // 是否隐藏，false显示，true隐藏
       showRequiredMark: false
     },
-    key: ""
+    model: "",
+    key: "",
+    rules: [
+      {
+        required: false,
+        message: "必填项"
+      }
+    ]
   },
   {
     type: "html",

@@ -40,7 +40,8 @@ export default {
   data() {
     return {
       locale: zhCN,
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      formData: {}
     };
   },
   // props: ["value", "dynamicData"],
@@ -201,6 +202,25 @@ export default {
     },
     handleChange(value, key) {
       // 触发change事件
+      this.formData[key] = value
+      for (let i of this.value.list) {
+        if (i.type === "text" && i.options.isSubmit) {
+          let items = i.options.computedItem.split("+")
+          let total = 0
+          for (let j of items) {
+            let num = null
+            if (typeof this.formData[j] === "object") {
+              for (let t of this.formData[j]) {
+                num += Number(t || 0)
+              }
+            } else {
+              num = this.formData[j]
+            }
+            total += Number(num || 0)
+          }
+          i.options.defaultValue = total
+        }
+      }
       this.$emit("change", value, key);
     }
   },
