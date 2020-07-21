@@ -122,6 +122,7 @@ export const basicsList = [
     label: "多选框",
     icon: "icon-duoxuan1",
     options: {
+      isBlock: false,
       isLable: false,
       disabled: false, //是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏
@@ -157,6 +158,7 @@ export const basicsList = [
     label: "单选框", // 标题文字
     icon: "icon-danxuan-cuxiantiao",
     options: {
+      isBlock: false,
       isLable: false,
       disabled: false, //是否禁用
       hidden: false, // 是否隐藏，false显示，true隐藏

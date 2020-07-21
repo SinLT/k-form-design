@@ -357,6 +357,11 @@
           label="操作属性"
         >
           <kCheckbox
+            v-if="typeof options.isBlock !== 'undefined'"
+            v-model="options.isBlock"
+            label="显示块级"
+          />
+          <kCheckbox
             v-if="typeof options.isLable !== 'undefined'"
             v-model="options.isLable"
             label="显示label"

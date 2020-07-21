@@ -64,7 +64,7 @@
           <a-icon type="border-horizontal" />增加一列
         </li>
         <li @click="handleAddRow"><a-icon type="border-verticle" />增加一行</li>
-        <li @click="handleBack"><a-icon type="border-verticle" />回退</li>
+        <li @click="handleBack"><a-icon type="rollback" />回退</li>
       </ul>
     </div>
   </div>

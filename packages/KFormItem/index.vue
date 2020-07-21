@@ -149,6 +149,7 @@
       :disabled="disabled || record.options.disabled"
       :placeholder="record.options.placeholder"
       @change="handleChange($event.target.value, record.model)"
+      :prefixCls="record.options.isBlock ? 'radioBlock' : ''"
       v-decorator="[
         record.model,
         {
@@ -170,6 +171,7 @@
       :disabled="disabled || record.options.disabled"
       :placeholder="record.options.placeholder"
       @change="handleChange($event, record.model)"
+      :prefixCls="record.options.isBlock ? 'checkboxBlock' : ''"
       v-decorator="[
         record.model,
         {
