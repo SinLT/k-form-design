@@ -34,6 +34,7 @@
  */
 import buildBlocks from "./buildBlocks";
 import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
+import $ from "jquery"
 // import moment from "moment";
 export default {
   name: "KFormBuild",
@@ -203,24 +204,30 @@ export default {
     handleChange(value, key) {
       // 触发change事件
       this.formData[key] = value
-      for (let i of this.value.list) {
-        if (i.type === "text" && i.options.isSubmit) {
-          let items = i.options.computedItem.split("+")
+      let self = this
+      $(".k-form-build-9136076486841527 span").each(function () {
+        let values = $(this).data("value")
+        if (values) {
+          values = values.split(",")
           let total = 0
-          for (let j of items) {
-            let num = null
-            if (typeof this.formData[j] === "object") {
-              for (let t of this.formData[j]) {
-                num += Number(t || 0)
+          if (values[1] && values[1].length > 0) {
+            let items = values[1].split("+")
+            for (let j of items) {
+              let num = null
+              if (typeof self.formData[j] === "object") {
+                for (let t of self.formData[j]) {
+                  num += Number(t || 0)
+                }
+              } else {
+                num = self.formData[j]
               }
-            } else {
-              num = this.formData[j]
+              total += Number(num || 0)
             }
-            total += Number(num || 0)
+            $(this).data(values[0], total)
+            self.form.setFieldsValue(JSON.parse(`{"${values[0]}":"${total}"}`))
           }
-          i.options.defaultValue = total
         }
-      }
+      })
       this.$emit("change", value, key);
     }
   },

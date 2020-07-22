@@ -21,5 +21,10 @@ module.exports = {
         javascriptEnabled: true
       }
     }
+  },
+  configureWebpack: config => {
+    config.externals = {
+      'jquery': 'global jQuery'
+    }
   }
-};
+}

@@ -188,8 +188,7 @@
               'select',
               'switch',
               'slider',
-              'html',
-              'text'
+              'html'
             ].includes(selectItem.type) &&
               typeof options.defaultValue !== 'undefined'
           "
@@ -352,6 +351,9 @@
         </a-form-item>
         <a-form-item v-if="selectItem.type === 'text'" label="文字CSS">
           <a-input v-model="options.textStyle" />
+        </a-form-item>
+        <a-form-item v-if="selectItem.type === 'card'" label="卡片CSS">
+          <a-input v-model="options.cardStyle" />
         </a-form-item>
         <a-form-item v-if="selectItem.type === 'text'" label="操作属性">
           <kCheckbox

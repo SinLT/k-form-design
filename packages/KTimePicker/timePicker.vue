@@ -19,7 +19,6 @@
 <script>
 import moment from "moment";
 export default {
-  // eslint-disable-next-line vue/require-prop-types
   props: ["record", "value", "parentDisabled"],
   computed: {
     time() {

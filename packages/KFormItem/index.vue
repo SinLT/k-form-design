@@ -456,8 +456,9 @@
       <span
         v-else
         :class="{ 'ant-form-item-required': record.options.showRequiredMark }"
-        v-text="record.options.defaultValue"
+        v-text="textComputed(record.options.defaultValue)"
         :style="record.options.textStyle"
+        :data-value="`${record.model},${record.options.computedItem}`"
         v-decorator="[
           record.model,
           {
@@ -506,6 +507,7 @@
  * date 2019-11-20
  */
 // import moment from "moment";
+import $ from "jquery"
 import customComponent from "./customComponent";
 
 import KBatch from "../KBatch";
@@ -555,6 +557,18 @@ export default {
         return window.$customComponentList.map(item => item.type);
       } else {
         return [];
+      }
+    },
+    textComputed (value) {
+      return (value) => {
+        let self = this
+        $(".k-form-build-9136076486841527 span").each(function () {
+          const model = $(this).data(self.record.model)
+          if (model) {
+            self.record.options.defaultValue = model
+          }
+        })
+        return this.record.options.defaultValue
       }
     }
   },

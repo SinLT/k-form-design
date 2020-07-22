@@ -133,6 +133,7 @@
         class="grid-box"
         :class="{ active: record.key === selectItem.key }"
         @click.stop="handleSelectItem(record)"
+        :style="record.options.cardStyle"
       >
         <a-card class="grid-row" :title="record.label">
           <div class="grid-col">

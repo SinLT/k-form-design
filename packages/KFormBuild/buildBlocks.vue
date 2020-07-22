@@ -29,6 +29,7 @@
   <a-card
     v-else-if="record.type === 'card'"
     class="grid-row"
+    :style="record.options.cardStyle"
     :title="record.label"
   >
     <buildBlocks

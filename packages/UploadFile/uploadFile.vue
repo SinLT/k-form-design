@@ -57,7 +57,6 @@
  */
 export default {
   name: "KUploadFile",
-  // eslint-disable-next-line vue/require-prop-types
   props: ["record", "value", "config", "parentDisabled", "dynamicData"],
   data() {
     return {

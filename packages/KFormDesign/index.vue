@@ -268,7 +268,7 @@ export default {
         }
       },
       previewOptions: {
-        width: 850
+        width: 1500
       },
       selectItem: {
         key: ""

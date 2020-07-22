@@ -58,7 +58,6 @@
  */
 export default {
   name: "KUploadImg",
-  // eslint-disable-next-line vue/require-prop-types
   props: ["record", "value", "config", "parentDisabled"],
   data() {
     return {

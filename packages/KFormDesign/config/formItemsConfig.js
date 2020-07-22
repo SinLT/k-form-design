@@ -613,7 +613,10 @@ export const layoutList = [
     icon: "icon-qiapian",
     list: [],
     key: "",
-    model: ""
+    model: "",
+    options: {
+      cardStyle: ''
+    }
   },
   {
     type: "grid",
