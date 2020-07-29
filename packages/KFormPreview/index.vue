@@ -10,7 +10,9 @@
     :destroyOnClose="true"
     :width="`${previewWidth}px`"
   >
-    <k-form-build :value="jsonData" @submit="handleSubmit" ref="KFormBuild" />
+    <div id="assessment_add">
+      <k-form-build :value="jsonData" @submit="handleSubmit" ref="KFormBuild" />
+    </div>
     <jsonModel ref="jsonModel" />
   </a-modal>
 </template>

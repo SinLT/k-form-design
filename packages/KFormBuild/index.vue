@@ -10,6 +10,7 @@
       :form="form"
       @submit="handleSubmit"
       :style="value.config.customStyle"
+      :selfUpdate="true"
     >
       <buildBlocks
         ref="buildBlocks"
@@ -203,9 +204,10 @@ export default {
     },
     handleChange(value, key) {
       // 触发change事件
+      console.log(value)
       this.formData[key] = value
       let self = this
-      $(".k-form-build-9136076486841527 span").each(function () {
+      $("#assessment_add span").each(function () {
         let values = $(this).data("value")
         if (values) {
           values = values.split(",")
@@ -216,15 +218,35 @@ export default {
               let num = null
               if (typeof self.formData[j] === "object") {
                 for (let t of self.formData[j]) {
-                  num += Number(t || 0)
+                  let data
+                  try {
+                    data = JSON.parse(t)
+                  } catch (error) {
+                    data = t
+                  }
+                  if (typeof data === "object") {
+                    num += Number(data.value || 0)
+                  } else {
+                    num += Number(data || 0)
+                  }
                 }
               } else {
-                num = self.formData[j]
+                let data
+                try {
+                  data = JSON.parse(self.formData[j])
+                } catch (error) {
+                  data = self.formData[j]
+                }
+                if (typeof data === "object") {
+                  num = data.value
+                } else {
+                  num = data
+                }
               }
               total += Number(num || 0)
             }
-            $(this).data(values[0], total)
             self.form.setFieldsValue(JSON.parse(`{"${values[0]}":"${total}"}`))
+            $(this).text(total)
           }
         }
       })

@@ -30,7 +30,7 @@
     :label="record.options.isLable ? record.label : ''"
     :label-col="formConfig.layout === 'horizontal' ? formConfig.labelCol : {}"
     :wrapper-col="
-      formConfig.layout === 'horizontal' ? formConfig.wrapperCol : {}
+      formConfig.layout === 'horizontal' && record.options.isLable ? formConfig.wrapperCol : {}
     "
   >
     <!-- 单行文本 -->
@@ -413,7 +413,7 @@
   <a-form-item
     v-else-if="record.type === 'button'"
     :wrapper-col="
-      formConfig.layout === 'horizontal'
+      formConfig.layout === 'horizontal' && record.options.isLable
         ? { ...formConfig.wrapperCol, offset: formConfig.labelCol.span }
         : {}
     "
@@ -456,7 +456,7 @@
       <span
         v-else
         :class="{ 'ant-form-item-required': record.options.showRequiredMark }"
-        v-text="textComputed(record.options.defaultValue)"
+        v-text="dynamicData[record.options.dynamicKey] ? dynamicData[record.options.dynamicKey] : textComputed(record.options.defaultValue)"
         :style="record.options.textStyle"
         :data-value="`${record.model},${record.options.computedItem}`"
         v-decorator="[

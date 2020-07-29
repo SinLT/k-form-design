@@ -536,7 +536,9 @@ export const basicsList = [
       textAlign: "left",
       textStyle: "",
       hidden: false, // 是否隐藏，false显示，true隐藏
-      showRequiredMark: false
+      showRequiredMark: false,
+      dynamicKey: "",
+      dynamic: true
     },
     model: "",
     key: "",

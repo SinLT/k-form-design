@@ -89,6 +89,16 @@
         </a-form-item>
         <!-- 选项配置及动态数据配置 start -->
         <a-form-item
+          v-if="selectItem.type === 'text'"
+          label="动态数据"
+        >
+          <a-input
+            v-show="options.dynamic"
+            v-model="options.dynamicKey"
+            placeholder="动态数据变量名"
+          ></a-input>
+        </a-form-item>
+        <a-form-item
           v-if="typeof options.options !== 'undefined'"
           label="选项配置"
         >
