@@ -564,7 +564,7 @@ export const basicsList = [
 // 高级控件
 // export const highList = [];
 
-// import { Alert } from "ant-design-vue";
+// import { Alert } from "@sinlt/ant-design-vue";
 
 // 自定义组件
 export const customComponents = {

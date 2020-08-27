@@ -34,7 +34,7 @@
  * description 将json数据构建成表单
  */
 import buildBlocks from "./buildBlocks";
-import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
+import zhCN from "@sinlt/ant-design-vue/lib/locale-provider/zh_CN";
 import $ from "jquery"
 // import moment from "moment";
 export default {
@@ -218,30 +218,10 @@ export default {
               let num = null
               if (typeof self.formData[j] === "object") {
                 for (let t of self.formData[j]) {
-                  let data
-                  try {
-                    data = JSON.parse(t)
-                  } catch (error) {
-                    data = t
-                  }
-                  if (typeof data === "object") {
-                    num += Number(data.value || 0)
-                  } else {
-                    num += Number(data || 0)
-                  }
+                  num += Number(t || 0)
                 }
               } else {
-                let data
-                try {
-                  data = JSON.parse(self.formData[j])
-                } catch (error) {
-                  data = self.formData[j]
-                }
-                if (typeof data === "object") {
-                  num = data.value
-                } else {
-                  num = data
-                }
+                num = self.formData[j]
               }
               total += Number(num || 0)
             }

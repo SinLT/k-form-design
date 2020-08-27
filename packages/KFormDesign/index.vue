@@ -164,7 +164,7 @@ import collapseItem from "./module/collapseItem";
 import importJsonModal from "./module/importJsonModal";
 import previewModal from "../KFormPreview/index.vue";
 // import draggable from "vuedraggable";
-import zhCN from "ant-design-vue/lib/locale-provider/zh_CN";
+import zhCN from "@sinlt/ant-design-vue/lib/locale-provider/zh_CN";
 import {
   basicsList,
   // highList,

@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     [
       "import",
-      { libraryName: "ant-design-vue", libraryDirectory: "es", style: true }
+      { libraryName: "@sinlt/ant-design-vue", libraryDirectory: "es", style: true }
     ]
   ]
 };

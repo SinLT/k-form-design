@@ -39,7 +39,7 @@ import {
   Collapse,
   Cascader,
   TreeSelect
-} from 'ant-design-vue'
+} from '@sinlt/ant-design-vue'
 
 Vue.use(TreeSelect)
 Vue.use(ConfigProvider)
