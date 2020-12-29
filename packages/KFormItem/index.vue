@@ -474,6 +474,10 @@
     v-else-if="record.type === 'html'"
     v-html="record.options.defaultValue"
   ></div>
+  <!-- 图片展示 -->
+  <div v-else-if="record.type === 'image'" :style="{textAlign: record.options.textAlign}">
+    <img :src="record.options.defaultValue" :style="{width: record.options.width, height: record.options.height}" />
+  </div>
   <!-- 自定义组件 -->
   <customComponent
     v-else-if="customList.includes(record.type)"

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{
-      'layout-width': ['grid', 'table', 'card', 'divider', 'html'].includes(
+      'layout-width': ['grid', 'table', 'card', 'divider', 'html', 'image'].includes(
         record.type
       )
     }"

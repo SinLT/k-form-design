@@ -59,7 +59,10 @@
           <a-input placeholder="请输入" v-model="options.width" />
         </a-form-item>
         <a-form-item v-if="typeof options.height !== 'undefined'" label="高度">
-          <a-input-number v-model="options.height" />
+          <a-input placeholder="请输入" v-model="options.height" />
+        </a-form-item>
+        <a-form-item v-if="typeof options.textAlign !== 'undefined'" label="位置">
+          <a-input placeholder="请输入" v-model="options.textAlign" />
         </a-form-item>
         <a-form-item v-if="typeof options.step !== 'undefined'" label="步长">
           <a-input-number v-model="options.step" placeholder="请输入" />

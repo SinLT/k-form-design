@@ -558,6 +558,18 @@ export const basicsList = [
       defaultValue: "<strong>HTML</strong>"
     },
     key: ""
+  },
+  {
+    type: "image",
+    label: "图片展示",
+    icon: "icon-image",
+    options: {
+      defaultValue: "http://10.0.0.23/static/image/photo-women.jpg",
+      width: 'auto',
+      height: 'auto',
+      textAlign: 'left'
+    },
+    key: ""
   }
 ];
 

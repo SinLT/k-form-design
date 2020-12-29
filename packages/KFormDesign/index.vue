@@ -231,7 +231,8 @@ export default {
         "divider",
         "card",
         "grid",
-        "table"
+        "table",
+        "image"
       ]
     },
     hideModel: {
@@ -255,7 +256,8 @@ export default {
         "grid",
         "table",
         "alert",
-        "html"
+        "html",
+        "image"
       ],
       data: {
         list: [],
