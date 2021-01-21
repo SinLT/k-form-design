@@ -15,6 +15,22 @@
 
         <a-form-item
           v-if="!hideModel && typeof selectItem.model !== 'undefined'"
+          label="数据绑定"
+        >
+          <a-select
+            show-search
+            placeholder="请选择"
+            option-filter-prop="children"
+            @change="dataBindChange"
+          >
+            <a-select-option :value="item.key" v-for="(item, index) in bindDatas" :key="index">
+              {{ item.name }}
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <a-form-item
+          v-if="!hideModel && typeof selectItem.model !== 'undefined'"
           label="数据字段"
         >
           <a-input v-model="selectItem.model" placeholder="请输入" />
@@ -523,11 +539,13 @@
  */
 import KChangeOption from "../../KChangeOption/index.vue";
 import kCheckbox from "../../KCheckbox/index.vue";
+import { ajax } from "../../common"
 export default {
   name: "formItemProperties",
   data() {
     return {
-      options: {}
+      options: {},
+      bindDatas: []
     };
   },
   watch: {
@@ -548,6 +566,24 @@ export default {
   components: {
     KChangeOption,
     kCheckbox
+  },
+  methods: {
+    dataBindChange (e) {
+      this.selectItem.model = e
+    },
+    async getBindKey () {
+      try {
+        const res = await ajax('get', '/app/evaluate/bindKey', {
+          locId: this.$route.query.locId
+        })
+        this.bindDatas = res.data
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  },
+  mounted () {
+    this.getBindKey()
   }
 };
 </script>
