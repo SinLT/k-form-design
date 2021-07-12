@@ -86,6 +86,13 @@ export default {
     reset() {
       // 重置表单
       this.form.resetFields();
+      this.formData = {};
+      $("#assessment_add span").each(function () {
+        let values = $(this).data("value")
+        if (values) {
+          $(this).text(0)
+        }
+      })
     },
     getData() {
       // 提交函数，提供父级组件调用
@@ -204,8 +211,12 @@ export default {
     },
     handleChange(value, key) {
       // 触发change事件
-      console.log(value)
-      this.formData[key] = value
+      console.log(value, key)
+      if (Number(value)) {
+        this.formData[key] = value
+      } else {
+        this.formData[key] = JSON.parse(value).value
+      }
       let self = this
       $("#assessment_add span").each(function () {
         let values = $(this).data("value")
